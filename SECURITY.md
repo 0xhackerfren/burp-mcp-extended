@@ -33,9 +33,9 @@ The Ktor server validates Origin, Host, and Referer headers on all requests. Bro
 
 Sensitive operations require explicit user approval via Swing dialogs:
 
-- **HTTP requests** -- Outbound requests to external hosts require approval
-- **History access** -- Reading proxy history, WebSocket history, or site map data requires approval
-- **Scanner operations** -- Starting crawls, audits, and generating reports requires approval
+- **HTTP requests** - Outbound requests to external hosts require approval
+- **History access** - Reading proxy history, WebSocket history, or site map data requires approval
+- **Scanner operations** - Starting crawls, audits, and generating reports requires approval
 
 Each approval type supports "Always Allow" options and configurable auto-approve targets.
 

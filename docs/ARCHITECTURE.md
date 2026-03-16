@@ -104,9 +104,9 @@ All 53 tools are registered in `Tools.kt` using the `mcpTool` and `mcpPaginatedT
 
 Three approval handlers gate access to sensitive operations:
 
-- **HttpRequestSecurity** -- Approves outbound HTTP requests. Supports auto-approve by hostname, host:port, or wildcard (`*.example.com`).
-- **HistoryAccessSecurity** -- Approves access to proxy HTTP history, WebSocket history, and site map data.
-- **ScannerSecurity** -- Approves scanner operations (crawls, audits, report generation).
+- **HttpRequestSecurity** - Approves outbound HTTP requests. Supports auto-approve by hostname, host:port, or wildcard (`*.example.com`).
+- **HistoryAccessSecurity** - Approves access to proxy HTTP history, WebSocket history, and site map data.
+- **ScannerSecurity** - Approves scanner operations (crawls, audits, report generation).
 
 Each handler shows a Swing dialog for user confirmation and supports "Always Allow" options that persist in config.
 

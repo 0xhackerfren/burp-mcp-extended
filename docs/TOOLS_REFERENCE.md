@@ -20,7 +20,7 @@ This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" r
 | `get_proxy_websocket_history` | List proxy WebSocket history (paginated) | All |
 | `get_proxy_websocket_history_regex` | Search WebSocket history by regex (paginated) | All |
 
-## Site Map (6 tools) -- Pro Only
+## Site Map (6 tools) - Pro Only
 
 | Tool | Description |
 |------|-------------|
@@ -31,7 +31,7 @@ This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" r
 | `search_site_map` | Search site map by method, status code range, MIME type |
 | `add_to_site_map` | Add a request/response pair to the site map |
 
-## Scanner Control (7 tools) -- Pro Only
+## Scanner Control (7 tools) - Pro Only
 
 | Tool | Description |
 |------|-------------|
@@ -59,7 +59,7 @@ This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" r
 | `exclude_from_scope` | Remove a URL from Burp's target scope |
 | `is_in_scope` | Check whether a URL is in scope |
 
-## Collaborator (2 tools) -- Pro Only
+## Collaborator (2 tools) - Pro Only
 
 | Tool | Description |
 |------|-------------|
@@ -83,7 +83,7 @@ This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" r
 | `send_to_decoder` | Send data to Decoder |
 | `send_to_organizer` | Send a request/response pair to Organizer |
 
-## Scanner Issues (1 tool) -- Pro Only
+## Scanner Issues (1 tool) - Pro Only
 
 | Tool | Description |
 |------|-------------|
