@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
+        with:
+          validate-wrappers: true
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Build SSE-only JAR
+        run: ./gradlew shadowJar
+
+      - name: Copy SSE JAR
+        run: cp build/libs/burp-mcp-all.jar burp-mcp-sse.jar
+
+      - name: Download proxy JAR
+        run: ./gradlew downloadProxyJar
+
+      - name: Build full JAR (SSE + stdio)
+        run: ./gradlew embedProxyJar
+
+      - name: Copy full JAR
+        run: cp build/libs/burp-mcp-all.jar burp-mcp-full.jar
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        with:
+          generate_release_notes: true
+          files: |
+            burp-mcp-sse.jar
+            burp-mcp-full.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

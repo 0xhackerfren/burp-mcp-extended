@@ -1,0 +1,80 @@
+name: Bug Report
+description: Report a bug in the Burp MCP Server extension
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill out the information below so we can help.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug.
+      placeholder: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this?
+      placeholder: |
+        1. Enable the MCP server
+        2. Connect Cursor to the server
+        3. Call the tool `...`
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: input
+    id: burp-version
+    attributes:
+      label: Burp Suite Version
+      description: "Edition and version (e.g. Professional 2025.1.2)"
+      placeholder: "Professional 2025.x.x"
+    validations:
+      required: true
+
+  - type: input
+    id: java-version
+    attributes:
+      label: Java Version
+      description: "Output of `java -version`"
+      placeholder: "21.0.x"
+    validations:
+      required: true
+
+  - type: input
+    id: client
+    attributes:
+      label: MCP Client
+      description: "Which AI client are you using?"
+      placeholder: "Cursor / Claude Desktop / other"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      placeholder: "Windows 11 / macOS 15 / Ubuntu 24.04"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Paste any relevant output from Burp's extension output/error tabs.
+      render: text

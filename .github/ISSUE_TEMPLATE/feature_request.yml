@@ -1,0 +1,46 @@
+name: Feature / Tool Request
+description: Suggest a new feature or MCP tool
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for a new tool or feature? We'd love to hear it.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature or tool you'd like to see.
+      placeholder: What would this do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: How would you use this in a penetration testing workflow?
+      placeholder: "When I'm testing X, I want to be able to Y so that Z..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - New MCP tool
+        - Enhancement to existing tool
+        - UI/UX improvement
+        - Security
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any workarounds or alternative approaches?
