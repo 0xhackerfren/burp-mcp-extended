@@ -760,85 +760,6 @@ fun Server.registerTools(api: MontoyaApi, config: McpConfig) {
         api.utilities().htmlUtils().decode(content)
     }
 
-    // --- Authenticated Crawl Tools ---
-
-    mcpTool<StartAuthenticatedCrawl>(
-        "Starts an authenticated BFS crawl from seed URLs. Provide cookies as a header string " +
-        "(e.g. 'sessionid=abc123; csrftoken=xyz'). The crawler follows links, respects scope, " +
-        "and adds all responses to Burp's site map. Returns a task ID for tracking with get_crawl_status. " +
-        "Optionally pass extraPathPatterns as a list of regex strings to extract additional " +
-        "URLs from responses (e.g. [\"/custom-api/[^\\\"']+\"] to match app-specific endpoints)."
-    ) {
-        val allowed = runBlocking {
-            ScannerSecurity.checkScanPermission(
-                "Start authenticated crawl on: ${seedUrls.joinToString(", ")} " +
-                "(maxDepth=$maxDepth, maxPages=$maxPages)",
-                config, api
-            )
-        }
-        if (!allowed) {
-            api.logging().logToOutput("MCP authenticated crawl denied")
-            return@mcpTool "Scanner operation denied by Burp Suite"
-        }
-
-        val headers = extraHeaders ?: emptyMap()
-        val crawler = AuthenticatedCrawler(
-            api = api,
-            seedUrls = seedUrls,
-            cookies = cookies,
-            extraHeaders = headers,
-            maxDepth = maxDepth ?: 10,
-            maxPages = maxPages ?: 500,
-            delayMs = delayMs ?: 100,
-            extraPathPatterns = extraPathPatterns ?: emptyList()
-        )
-
-        val taskId = CrawlTaskRegistry.register(crawler)
-        api.logging().logToOutput("MCP starting authenticated crawl [$taskId]: ${seedUrls.joinToString(", ")}")
-        crawler.start()
-
-        Json.encodeToString(CrawlStatus(
-            taskId = taskId,
-            status = crawler.status.get(),
-            pagesVisited = 0,
-            pagesQueued = crawler.pagesQueued(),
-            urlsDiscovered = crawler.urlsDiscovered(),
-            currentDepth = 0,
-            errors = 0,
-            elapsedMs = 0
-        ))
-    }
-
-    mcpTool<GetCrawlStatus>(
-        "Gets the status of a running authenticated crawl task. " +
-        "Use the taskId returned by authenticated_crawl."
-    ) {
-        val crawler = CrawlTaskRegistry.get(taskId)
-            ?: return@mcpTool "No crawl task found with ID: $taskId"
-
-        Json.encodeToString(CrawlStatus(
-            taskId = taskId,
-            status = crawler.status.get(),
-            pagesVisited = crawler.pagesVisited.get(),
-            pagesQueued = crawler.pagesQueued(),
-            urlsDiscovered = crawler.urlsDiscovered(),
-            currentDepth = crawler.currentDepth.get(),
-            errors = crawler.errors.get(),
-            elapsedMs = crawler.elapsedMs()
-        ))
-    }
-
-    mcpTool<StopCrawl>(
-        "Stops a running authenticated crawl task."
-    ) {
-        val crawler = CrawlTaskRegistry.get(taskId)
-            ?: return@mcpTool "No crawl task found with ID: $taskId"
-
-        crawler.cancel()
-        api.logging().logToOutput("MCP cancelled crawl task: $taskId")
-        "Crawl task $taskId cancelled. Pages visited: ${crawler.pagesVisited.get()}, URLs discovered: ${crawler.urlsDiscovered()}"
-    }
-
     // --- Cookie Jar Tools ---
 
     mcpTool<SetCookieJar>(
@@ -1178,25 +1099,6 @@ data class SendToOrganizer(
     val targetPort: Int,
     val usesHttps: Boolean
 )
-
-// --- Authenticated Crawl Data Classes ---
-
-@Serializable
-data class StartAuthenticatedCrawl(
-    val seedUrls: List<String>,
-    val cookies: String,
-    val extraHeaders: Map<String, String>? = null,
-    val maxDepth: Int? = 10,
-    val maxPages: Int? = 500,
-    val delayMs: Long? = 100,
-    val extraPathPatterns: List<String>? = null
-)
-
-@Serializable
-data class GetCrawlStatus(val taskId: String)
-
-@Serializable
-data class StopCrawl(val taskId: String)
 
 // --- Cookie Jar Data Classes ---
 

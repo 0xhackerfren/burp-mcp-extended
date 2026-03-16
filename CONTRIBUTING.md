@@ -14,8 +14,8 @@ Contributions are welcome. This guide covers development setup, how to add new t
 ### Building
 
 ```bash
-git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP-.git
-cd Enhanced-BURP-MCP-
+git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP.git
+cd Enhanced-BURP-MCP
 ./gradlew shadowJar
 ```
 
@@ -33,7 +33,7 @@ Tests use MockK to mock the Burp Montoya API. Integration tests start a real Kto
 src/main/kotlin/net/portswigger/
     extension/              Burp extension entry point, UI, providers
     mcp/                    MCP server, tools, security, config
-        tools/Tools.kt      All 53 tool definitions live here
+        tools/Tools.kt      All 50 tool definitions live here
 ```
 
 ## Adding a New Tool

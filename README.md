@@ -1,10 +1,10 @@
 # Burp Suite MCP Server (Extended)
 
-An extended [Model Context Protocol](https://modelcontextprotocol.io/) server for Burp Suite that exposes **53 tools** to AI clients, enabling AI-driven penetration testing workflows.
+An extended [Model Context Protocol](https://modelcontextprotocol.io/) server for Burp Suite that exposes **50 tools** to AI clients, enabling AI-driven penetration testing workflows.
 
-Built on [PortSwigger's official MCP Server](https://github.com/PortSwigger/mcp-server) and extended with site map access, scanner control, authenticated crawling, scope management, cookie jar control, and more.
+Built on [PortSwigger's official MCP Server](https://github.com/PortSwigger/mcp-server) and extended with site map access, scanner control, scope management, cookie jar control, and more.
 
-[![CI](https://github.com/0xhackerfren/Enhanced-BURP-MCP-/actions/workflows/ci.yml/badge.svg)](https://github.com/0xhackerfren/Enhanced-BURP-MCP-/actions/workflows/ci.yml)
+[![CI](https://github.com/0xhackerfren/Enhanced-BURP-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/0xhackerfren/Enhanced-BURP-MCP/actions/workflows/ci.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Java 21+](https://img.shields.io/badge/Java-21%2B-blue)](https://adoptium.net/)
 [![MCP](https://img.shields.io/badge/MCP-Compatible-green)](https://modelcontextprotocol.io/)
@@ -18,15 +18,15 @@ Built on [PortSwigger's official MCP Server](https://github.com/PortSwigger/mcp-
 
 ### Option A: Download a Pre-Built JAR (Recommended)
 
-1. Go to [Releases](https://github.com/0xhackerfren/Enhanced-BURP-MCP-/releases) and download `burp-mcp-sse.jar` or `burp-mcp-full.jar`
+1. Go to [Releases](https://github.com/0xhackerfren/Enhanced-BURP-MCP/releases) and download `burp-mcp-sse.jar` or `burp-mcp-full.jar`
 2. In Burp Suite, go to **Extensions > Add > Java** and select the JAR
 3. Open the **MCP** tab and enable the server
 
 ### Option B: Build from Source
 
 ```bash
-git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP-.git
-cd Enhanced-BURP-MCP-
+git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP.git
+cd Enhanced-BURP-MCP
 ./gradlew shadowJar
 ```
 
@@ -67,7 +67,7 @@ java -jar mcp-proxy-all.jar --sse-url http://127.0.0.1:9876
 
 ---
 
-## Tools (53 Total)
+## Tools (50 Total)
 
 | Category | Tools | Edition |
 |----------|-------|---------|
@@ -75,7 +75,6 @@ java -jar mcp-proxy-all.jar --sse-url http://127.0.0.1:9876
 | **Proxy History** | Browse, search, get items, highlight/annotate | All (some Pro) |
 | **Site Map** | URLs, entries, request/response bodies, search, add | Pro |
 | **Scanner Control** | Start crawls/audits, monitor status, get issues, generate reports | Pro |
-| **Authenticated Crawling** | BFS crawler with cookies, headers, depth/page limits | All |
 | **Scope Management** | Include/exclude URLs, check scope | All |
 | **Cookie Jar** | Get/set cookies with domain, path, expiration | All |
 | **Tool Integration** | Repeater, Intruder, Comparer, Decoder, Organizer | All |
@@ -93,12 +92,11 @@ See the [complete tool reference](docs/TOOLS_REFERENCE.md) for details on every 
 |---------|---------------|----------------|
 | Site map access | Not available | Full access with search/filter |
 | Scanner control | View issues only | Start crawls, audits, generate reports |
-| Authenticated crawling | Not available | BFS crawler with auth support |
 | Scope management | Not available | Include/exclude/check URLs |
 | Cookie jar | Not available | Get/set cookies |
 | Tool integration | Repeater, Intruder | + Comparer, Decoder, Organizer |
 | Encoding | URL, Base64 | + HTML encode/decode |
-| **Total tools** | **24** | **53** |
+| **Total tools** | **24** | **50** |
 
 ---
 
@@ -158,7 +156,7 @@ src/main/kotlin/net/portswigger/
         providers/          Claude Desktop installer, proxy JAR manager
         ui/                 Config UI panels, design system, dialogs
     mcp/                    MCP server layer
-        tools/              All 53 tool definitions
+        tools/              All 50 tool definitions
         security/           Approval handlers (HTTP, history, scanner)
         config/             Persistent configuration
         schema/             JSON schema generation, serialization
@@ -169,7 +167,7 @@ src/main/kotlin/net/portswigger/
 ## Documentation
 
 - [Architecture](docs/ARCHITECTURE.md) - System diagram, source layout, key components
-- [Tool Reference](docs/TOOLS_REFERENCE.md) - All 53 tools with descriptions and edition requirements
+- [Tool Reference](docs/TOOLS_REFERENCE.md) - All 50 tools with descriptions and edition requirements
 - [Configuration](docs/CONFIGURATION.md) - Server settings, security options, client setup, troubleshooting
 - [Contributing](CONTRIBUTING.md) - Development setup, adding tools, PR process
 - [Changelog](CHANGELOG.md) - Version history and changes from upstream

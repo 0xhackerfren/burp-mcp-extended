@@ -4,7 +4,7 @@ All notable changes compared to the upstream [PortSwigger/mcp-server](https://gi
 
 ## [2.0.0] - 2026-03-16
 
-### Added - New Tools (29 tools added to the stock 24)
+### Added - New Tools (26 tools added to the stock 24)
 
 **Site Map Access (6 tools)**
 - `get_site_map_urls` - Retrieve deduplicated URLs from the site map with optional prefix filter
@@ -22,11 +22,6 @@ All notable changes compared to the upstream [PortSwigger/mcp-server](https://gi
 - `delete_scan_task` - Cancel and remove a running scan
 - `get_audit_issues` - Get issues from a specific audit task
 - `generate_scan_report` - Generate HTML/XML scan reports
-
-**Authenticated Crawling (3 tools)**
-- `start_authenticated_crawl` - BFS crawler with cookies, custom headers, depth and page limits, rate control
-- `get_crawl_status` - Monitor crawl progress (pages visited/queued, depth, errors, elapsed time)
-- `stop_crawl` - Stop a running authenticated crawl
 
 **Scope Management (3 tools)**
 - `include_in_scope` - Add a URL to Burp's target scope

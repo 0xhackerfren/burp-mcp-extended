@@ -6,8 +6,8 @@ ScreenVersion: 2.0.0
 SerialVersion: 8
 MinPlatformVersion: 2
 ProOnly: False
-Author: Jacob Bell (Suzu Inc), based on PortSwigger MCP Server
-ShortDescription: Extended Burp MCP Server with 53 tools: site map access, scanner control, authenticated crawling, scope management, cookie jar, and full tool integration for AI-driven pentesting.
+Author: Jacob Krell (Suzu Labs), based on PortSwigger MCP Server
+ShortDescription: Extended Burp MCP Server with 50 tools: site map access, scanner control, scope management, cookie jar, and full tool integration for AI-driven pentesting.
 EntryPoint: burp-mcp-all.jar
 BuildCommand: ./gradlew shadowJar
 SupportedProducts: Pro, Community

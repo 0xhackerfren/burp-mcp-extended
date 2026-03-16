@@ -1,6 +1,6 @@
 # Complete Tool Reference
 
-This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" require Burp Suite Professional.
+This extension exposes **50 MCP tools** to AI clients. Tools marked "Pro Only" require Burp Suite Professional.
 
 ## HTTP Requests (2 tools)
 
@@ -42,14 +42,6 @@ This extension exposes **53 MCP tools** to AI clients. Tools marked "Pro Only" r
 | `delete_scan_task` | Cancel and delete a running scan task |
 | `get_audit_issues` | Get issues found by a specific audit task |
 | `generate_scan_report` | Generate an HTML or XML report for scanner issues |
-
-## Authenticated Crawling (3 tools)
-
-| Tool | Description |
-|------|-------------|
-| `start_authenticated_crawl` | BFS crawl with cookies, custom headers, depth/page limits, rate control |
-| `get_crawl_status` | Monitor crawl progress (pages visited, queued, depth, errors) |
-| `stop_crawl` | Stop a running authenticated crawl |
 
 ## Scope Management (3 tools)
 

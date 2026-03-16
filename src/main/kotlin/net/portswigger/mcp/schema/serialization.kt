@@ -283,15 +283,3 @@ data class BurpVersionInfo(
     val version: String,
     val buildNumber: Long
 )
-
-@Serializable
-data class CrawlStatus(
-    val taskId: String,
-    val status: String,
-    val pagesVisited: Int,
-    val pagesQueued: Int,
-    val urlsDiscovered: Int,
-    val currentDepth: Int,
-    val errors: Int,
-    val elapsedMs: Long
-)

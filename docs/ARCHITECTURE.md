@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Burp Suite MCP Server (Extended) is a Burp Suite extension that embeds an MCP (Model Context Protocol) server, exposing 53 tools to AI clients like Cursor and Claude Desktop.
+The Burp Suite MCP Server (Extended) is a Burp Suite extension that embeds an MCP (Model Context Protocol) server, exposing 50 tools to AI clients like Cursor and Claude Desktop.
 
 ## System Diagram
 
@@ -22,7 +22,7 @@ flowchart LR
     subgraph ext [Burp Extension]
         Ktor[Ktor Netty Server]
         MCP[MCP Protocol Handler]
-        Tools[53 Registered Tools]
+        Tools[50 Registered Tools]
         Security[Security Layer\nApproval + Auto-approve]
     end
 
@@ -78,12 +78,10 @@ src/main/kotlin/net/portswigger/
             serialization.kt    Burp API to JSON DTO conversions
         security/               Approval handlers for HTTP, history, scanner
             SecurityUtils.kt    Swing frame lookup utilities
-        tools/                  All 53 MCP tool definitions
+        tools/                  All 50 MCP tool definitions
             Tools.kt            Tool registrations and data classes
             McpTool.kt          mcpTool/mcpPaginatedTool DSL
-            AuthenticatedCrawler.kt  BFS crawler with auth support
-            ScanTaskRegistry.kt      Scanner task ID tracking
-            CrawlTaskRegistry.kt     Crawl task ID tracking
+            ScanTaskRegistry.kt Scanner task ID tracking
 ```
 
 ## Key Components
@@ -98,7 +96,7 @@ Manages the Ktor Netty embedded server lifecycle. Starts/stops the SSE server, c
 
 ### Tools (registerTools)
 
-All 53 tools are registered in `Tools.kt` using the `mcpTool` and `mcpPaginatedTool` DSL. Each tool is a `@Serializable` data class that defines its input parameters. Tool names are auto-derived from the class name in `lower_snake_case`.
+All 50 tools are registered in `Tools.kt` using the `mcpTool` and `mcpPaginatedTool` DSL. Each tool is a `@Serializable` data class that defines its input parameters. Tool names are auto-derived from the class name in `lower_snake_case`.
 
 ### Security Layer
 

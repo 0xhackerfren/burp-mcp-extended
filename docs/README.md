@@ -3,7 +3,7 @@
 | Document | Description |
 |----------|-------------|
 | [Architecture](ARCHITECTURE.md) | System diagram, source layout, key components |
-| [Tool Reference](TOOLS_REFERENCE.md) | All 53 tools with descriptions and edition requirements |
+| [Tool Reference](TOOLS_REFERENCE.md) | All 50 tools with descriptions and edition requirements |
 | [Configuration](CONFIGURATION.md) | Server settings, security options, client setup, troubleshooting |
 
 See also:
