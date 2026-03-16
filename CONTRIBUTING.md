@@ -14,8 +14,8 @@ Contributions are welcome. This guide covers development setup, how to add new t
 ### Building
 
 ```bash
-git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP.git
-cd Enhanced-BURP-MCP
+git clone https://github.com/0xhackerfren/burp-mcp-extended.git
+cd burp-mcp-extended
 ./gradlew shadowJar
 ```
 

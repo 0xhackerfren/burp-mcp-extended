@@ -4,7 +4,7 @@ An extended [Model Context Protocol](https://modelcontextprotocol.io/) server fo
 
 Built on [PortSwigger's official MCP Server](https://github.com/PortSwigger/mcp-server) and extended with site map access, scanner control, scope management, cookie jar control, and more.
 
-[![CI](https://github.com/0xhackerfren/Enhanced-BURP-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/0xhackerfren/Enhanced-BURP-MCP/actions/workflows/ci.yml)
+[![CI](https://github.com/0xhackerfren/burp-mcp-extended/actions/workflows/ci.yml/badge.svg)](https://github.com/0xhackerfren/burp-mcp-extended/actions/workflows/ci.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Java 21+](https://img.shields.io/badge/Java-21%2B-blue)](https://adoptium.net/)
 [![MCP](https://img.shields.io/badge/MCP-Compatible-green)](https://modelcontextprotocol.io/)
@@ -18,15 +18,15 @@ Built on [PortSwigger's official MCP Server](https://github.com/PortSwigger/mcp-
 
 ### Option A: Download a Pre-Built JAR (Recommended)
 
-1. Go to [Releases](https://github.com/0xhackerfren/Enhanced-BURP-MCP/releases) and download `burp-mcp-sse.jar` or `burp-mcp-full.jar`
+1. Go to [Releases](https://github.com/0xhackerfren/burp-mcp-extended/releases) and download `burp-mcp-sse.jar` or `burp-mcp-full.jar`
 2. In Burp Suite, go to **Extensions > Add > Java** and select the JAR
 3. Open the **MCP** tab and enable the server
 
 ### Option B: Build from Source
 
 ```bash
-git clone https://github.com/0xhackerfren/Enhanced-BURP-MCP.git
-cd Enhanced-BURP-MCP
+git clone https://github.com/0xhackerfren/burp-mcp-extended.git
+cd burp-mcp-extended
 ./gradlew shadowJar
 ```
 
