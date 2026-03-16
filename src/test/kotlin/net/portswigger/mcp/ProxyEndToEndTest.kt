@@ -11,6 +11,7 @@ import kotlinx.coroutines.runBlocking
 import net.portswigger.mcp.config.McpConfig
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Timeout
@@ -80,9 +81,7 @@ class ProxyEndToEndTest {
         }
 
         val jarFile = File("libs/mcp-proxy-all.jar")
-        check(jarFile.exists()) {
-            "libs/mcp-proxy-all.jar not found. Build it and copy it to libs first: ./gradlew embedProxyJar (from proxy repo root)"
-        }
+        assumeTrue(jarFile.exists(), "Skipping proxy tests: libs/mcp-proxy-all.jar not found. Run ./gradlew downloadProxyJar first.")
 
         proxyProcess = ProcessBuilder(
             "java",

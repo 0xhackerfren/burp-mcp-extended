@@ -5,9 +5,12 @@ abstract class DownloadProxyJarTask : DefaultTask() {
     @get:Input
     abstract val proxyVersion: Property<String>
 
+    @get:OutputDirectory
+    abstract val outputDir: DirectoryProperty
+
     @TaskAction
     fun download() {
-        val libsDir = project.file("libs")
+        val libsDir = outputDir.get().asFile
         libsDir.mkdirs()
         val targetFile = File(libsDir, "mcp-proxy-all.jar")
 
@@ -164,6 +167,7 @@ tasks {
         group = "build"
         description = "Downloads the MCP stdio proxy JAR from GitHub releases (required for Claude Desktop support)"
         proxyVersion.set("1.0.0")
+        outputDir.set(layout.projectDirectory.dir("libs"))
     }
 
     register<EmbedProxyJarTask>("embedProxyJar") {
